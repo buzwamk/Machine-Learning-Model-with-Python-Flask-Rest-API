@@ -2,7 +2,6 @@
 # coding: utf-8
 
 # ### Boston House Prices dataset
-# 
 
 # This dataset contains information collected by the U.S Census Service concerning housing in the area of Boston Mass
 # ######  There are 14 attributes in each case of the dataset. They are:
@@ -35,12 +34,10 @@ from sklearn.datasets import load_boston
 boston_data = load_boston()
 
 
-
 # initializing dataset
 data_df = pd.DataFrame(boston_data.data)
 
 data_df.head()
-
 
 
 # Adding features names to the dataframe
@@ -53,7 +50,6 @@ data_df.shape
 
 # checking null values
 data_df.isnull().sum()
-
 
 
 # checking if values are categorical or not
@@ -142,17 +138,6 @@ print("Root Mean Absolute Error : ", np.sqrt(metrics.mean_squared_error(y_test, 
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots()
-ax.scatter(y_test, prediction, edgecolors=(0, 0, 0))
-ax.plot([y_test.min(), y_test.max()], 
-        [y_test.min(), y_test.max()], 
-        'k--', lw=4)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
-
-mse = mean_squared_error(y_test, prediction)
-mse
 
 classifier.score(X_test, y_test)
 
@@ -171,7 +156,7 @@ with open('model/model_columns.pkl','wb') as file:
 
 # ### Creating API for machine learning using Flask
 
-from flask import render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import flask
 import numpy as np
 import traceback
